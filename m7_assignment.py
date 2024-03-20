@@ -11,11 +11,11 @@ print()
 
 n_byte = int(input('Enter number of Bytes you would like to determine the signed range of:'))
 n_bit = n_byte * 8
-n_encode = 2 ** n_bit
-n_above = n_encode/2 - 1
-n_bellow = -n_encode/2
-print('{:^3} Byte(s) integral type with 8 bits can encode {:^18,.0f} numbers. \
-The signed range will be from {:^18,.0f} to {:>15,.0f}'.format(n_byte, n_encode, n_bellow, n_above))
+n_encode = lambda n_byte: 2 ** (n_byte * 8)
+n_above = lambda n_encode: n_encode(n_byte)/2 - 1
+n_bellow = lambda n_encode): -n_encode(n_byte)/2
+print('{:^3} Byte(s) integral type with 8 bits per byte, can encode {:^18,.0f} numbers. \
+The signed range will be from {:^18,.0f} to {:>15,.0f}'.format(n_byte, n_encode(n_byte), n_bellow(n_encode), n_above(n_encode)))
 print()
 # 3.
 R = decimal.Decimal(8.3145)
